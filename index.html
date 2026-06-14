@@ -4,73 +4,343 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>仲南莲的私人网站 · 夺妻为后</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #0f172a; line-height: 1.5; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #e2e8f0; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 10px; }
-        .app { max-width: 1200px; margin: 0 auto; background: #ffffff; box-shadow: 0 0 30px rgba(0,0,0,0.02); }
-        .navbar { background: rgba(255,255,255,0.96); backdrop-filter: blur(4px); border-bottom: 1px solid #eef2f8; padding: 0 2rem; position: sticky; top: 0; z-index: 100; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; height: 70px; }
-        .logo { font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, #2c3e50, #a5552b); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .logo i { background: none; color: #c96f3e; margin-right: 6px; }
-        .nav-links { display: flex; gap: 2rem; align-items: center; }
-        .nav-links a { text-decoration: none; color: #2c3e50; font-weight: 500; cursor: default; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f0eb 0%, #e8e0d6 100%);
+            color: #1a120b;
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        /* 液态玻璃风格 - 毛玻璃效果 */
+        .glass {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 28px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #e2d8cf; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: #b88a5c; border-radius: 10px; }
+
+        .app {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        /* 导航栏 - 液态玻璃 */
+        .navbar {
+            background: rgba(255, 248, 240, 0.75);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 60px;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 1.5rem;
+            position: sticky;
+            top: 1rem;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #5c3a21, #c17b42);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo i { color: #c17b42; margin-right: 6px; background: none; }
+        .nav-links { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: #4a3724; font-weight: 500; transition: 0.2s; }
         .nav-links a:hover { color: #c96f3e; }
-        .visitor-count { background: #f1f5f9; padding: 0.4rem 1rem; border-radius: 40px; font-size: 0.8rem; color: #2c3e50; font-weight: 500; }
-        .visitor-count i { color: #c96f3e; margin-right: 6px; }
-        .hero { background: linear-gradient(112deg, #fef9f0 0%, #f6f2eb 100%); padding: 2rem; border-bottom: 1px solid #f0e9e0; }
-        .hero-badge { background: #e07c3c20; display: inline-block; padding: 0.2rem 1rem; border-radius: 40px; font-size: 0.75rem; color: #b45f2b; margin-bottom: 1rem; }
-        .hero-content h1 { font-size: 2rem; font-weight: 700; }
+        .visitor-count {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #5c3a21;
+        }
+        .visitor-count i { color: #c96f3e; margin-right: 5px; }
+
+        /* Hero 区域 */
+        .hero {
+            background: linear-gradient(112deg, rgba(254, 249, 240, 0.7) 0%, rgba(246, 242, 235, 0.7) 100%);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .hero-badge {
+            background: rgba(192, 111, 58, 0.15);
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            color: #b45f2b;
+            margin-bottom: 1rem;
+        }
+        .hero-content h1 { font-size: 2rem; font-weight: 700; color: #3e2a1c; }
         .media-tag { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
-        .pill { background: white; padding: 0.3rem 1rem; border-radius: 30px; font-size: 0.8rem; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
-        .main-container { padding: 2rem; }
-        .section-title { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.5rem; border-left: 5px solid #c96f3e; padding-left: 1rem; }
-        .section-title h2 { font-size: 1.5rem; font-weight: 600; }
-        .novel-showcase { background: #fefcf9; border-radius: 28px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.03); margin-bottom: 2rem; }
-        .novel-card-large { background: white; border-radius: 24px; padding: 1.5rem; display: flex; gap: 2rem; align-items: center; cursor: pointer; transition: all 0.3s; border: 1px solid #f0eae2; }
-        .novel-card-large:hover { transform: translateY(-4px); border-color: #e2cfb5; box-shadow: 0 12px 24px -12px rgba(0,0,0,0.12); }
-        .novel-cover-large { width: 120px; height: 140px; background: linear-gradient(145deg, #f3ede5, #e8dfd3); border-radius: 20px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: #a56534; }
-        .novel-info-large h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; }
-        .novel-meta-large { font-size: 0.85rem; color: #917c64; margin-bottom: 0.75rem; display: flex; gap: 1rem; flex-wrap: wrap; }
-        .read-badge { margin-top: 1rem; display: inline-block; background: #c96f3e; color: white; padding: 0.4rem 1.2rem; border-radius: 40px; font-size: 0.8rem; font-weight: 500; }
-        .chapters-preview { margin-top: 2rem; padding-top: 1rem; border-top: 1px dashed #e9dbc9; }
-        .chapters-preview h4 { font-size: 1rem; color: #b48c5c; margin-bottom: 1rem; }
-        .chapter-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .chapter-link { background: #f3ede5; padding: 0.3rem 1rem; border-radius: 40px; font-size: 0.8rem; cursor: pointer; transition: 0.2s; }
-        .chapter-link:hover { background: #c96f3e; color: white; }
-        .comments-section { background: #ffffff; border-radius: 28px; padding: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #f0eae2; }
-        .comments-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .comments-header i { font-size: 1.3rem; color: #c96f3e; }
-        .comments-header h3 { font-size: 1.2rem; font-weight: 600; }
-        .comment-form { background: #fefbf5; padding: 1.2rem; border-radius: 20px; margin-bottom: 1.5rem; }
-        .comment-input-group { margin-bottom: 1rem; }
-        .comment-input-group input, .comment-input-group textarea { width: 100%; padding: 0.8rem 1rem; border: 1px solid #e2d5c4; border-radius: 16px; font-family: inherit; font-size: 0.9rem; background: white; outline: none; }
-        .comment-input-group input:focus, .comment-input-group textarea:focus { border-color: #c96f3e; box-shadow: 0 0 0 2px #c96f3e20; }
-        .comment-input-group textarea { resize: vertical; min-height: 90px; }
-        .submit-comment { background: #c96f3e; color: white; border: none; padding: 0.6rem 1.5rem; border-radius: 40px; font-size: 0.85rem; font-weight: 500; cursor: pointer; }
-        .submit-comment:hover { background: #a8552a; }
-        .comments-list { max-height: 400px; overflow-y: auto; }
-        .comment-item { background: #fefbf5; padding: 1rem; border-radius: 16px; margin-bottom: 0.8rem; border-left: 3px solid #c96f3e; }
-        .comment-name { font-weight: 600; color: #4a3724; margin-bottom: 0.3rem; display: flex; justify-content: space-between; font-size: 0.85rem; }
-        .comment-time { font-size: 0.7rem; color: #aa9b8a; }
-        .comment-text { color: #3e2e1f; font-size: 0.9rem; line-height: 1.5; }
-        .empty-comments { text-align: center; color: #aa9b8a; padding: 2rem; font-size: 0.85rem; }
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); z-index: 1000; display: none; justify-content: center; align-items: center; }
-        .reader-container { background: #fef7e8; width: 850px; max-width: 90vw; height: 85vh; border-radius: 28px; display: flex; flex-direction: column; overflow: hidden; }
-        .reader-header { padding: 1rem 1.5rem; background: #fff2e1; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f0e2cf; }
-        .reader-content { flex: 1; overflow-y: auto; padding: 2rem; font-size: 1rem; line-height: 1.75; font-family: 'Georgia', 'Times New Roman', serif; color: #2c241a; }
-        .chapter-selector { display: flex; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #e9dbc9; flex-wrap: wrap; }
-        .chapter-btn { background: #f0e7dc; border: none; padding: 0.4rem 1.2rem; border-radius: 40px; font-size: 0.85rem; font-weight: 500; cursor: pointer; color: #6f4e2e; }
-        .chapter-btn.active { background: #c96f3e; color: white; }
-        .close-reader { background: none; border: none; font-size: 1.8rem; cursor: pointer; color: #ad8b67; }
-        .loading-spinner { text-align: center; padding: 3rem; color: #ad8b67; }
-        footer { background: #f4f7fb; padding: 1.5rem; text-align: center; font-size: 0.75rem; border-top: 1px solid #e6edf4; }
-        @media (max-width: 700px) { .novel-card-large { flex-direction: column; text-align: center; } .navbar { padding: 0 1rem; } }
-        .toast-msg { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); background: #2c3e50; color: white; padding: 0.6rem 1.2rem; border-radius: 40px; font-size: 0.8rem; z-index: 1100; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+        .pill {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+        }
+
+        .main-container { padding: 0; }
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1.2rem;
+            border-left: 4px solid #c96f3e;
+            padding-left: 1rem;
+        }
+        .section-title h2 { font-size: 1.4rem; font-weight: 600; }
+
+        /* 小说卡片 - 液态玻璃 */
+        .novel-showcase {
+            background: rgba(255, 252, 245, 0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.3s;
+        }
+        .novel-card-large {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+        .novel-card-large:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 20px 35px -15px rgba(0, 0, 0, 0.2);
+            border-color: rgba(201, 111, 62, 0.3);
+        }
+        .novel-cover-large {
+            width: 110px;
+            height: 130px;
+            background: linear-gradient(145deg, #f0e4d8, #e2d0be);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #c17b42;
+        }
+        .novel-info-large h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .novel-meta-large { font-size: 0.8rem; color: #7a6248; margin-bottom: 0.5rem; display: flex; gap: 1rem; flex-wrap: wrap; }
+        .read-badge {
+            margin-top: 0.8rem;
+            display: inline-block;
+            background: rgba(201, 111, 62, 0.9);
+            color: white;
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+
+        .chapters-preview {
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px dashed rgba(160, 120, 80, 0.3);
+        }
+        .chapter-links { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+        .chapter-link {
+            background: rgba(240, 235, 225, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .chapter-link:hover {
+            background: #c96f3e;
+            color: white;
+            border-color: transparent;
+        }
+
+        /* 评论区 - 液态玻璃 */
+        .comments-section {
+            background: rgba(255, 252, 245, 0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        .comment-form {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(4px);
+            padding: 1rem;
+            border-radius: 24px;
+            margin-bottom: 1.2rem;
+        }
+        .comment-input-group input,
+        .comment-input-group textarea {
+            width: 100%;
+            padding: 0.7rem 1rem;
+            border: 1px solid rgba(160, 120, 80, 0.3);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            font-family: inherit;
+            outline: none;
+        }
+        .comment-input-group input:focus,
+        .comment-input-group textarea:focus {
+            border-color: #c96f3e;
+            background: white;
+        }
+        .submit-comment {
+            background: rgba(201, 111, 62, 0.9);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+        }
+        .comment-item {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px);
+            padding: 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 0.6rem;
+            border-left: 3px solid #c96f3e;
+        }
+
+        /* 阅读器模态框 */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(30, 20, 15, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .reader-container {
+            background: rgba(254, 247, 232, 0.95);
+            backdrop-filter: blur(16px);
+            width: 850px;
+            max-width: 90vw;
+            height: 85vh;
+            border-radius: 32px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+        }
+        .reader-header {
+            padding: 1rem 1.5rem;
+            background: rgba(255, 242, 225, 0.8);
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(160, 120, 80, 0.2);
+        }
+        .reader-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.75;
+            font-family: 'Georgia', serif;
+            color: #2c241a;
+        }
+        .chapter-selector {
+            display: flex;
+            gap: 0.6rem;
+            margin-bottom: 1.2rem;
+            flex-wrap: wrap;
+        }
+        .chapter-btn {
+            background: rgba(240, 230, 215, 0.7);
+            border: none;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        .chapter-btn.active {
+            background: #c96f3e;
+            color: white;
+        }
+        .close-reader {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #8b694c;
+        }
+        .loading-spinner { text-align: center; padding: 2rem; color: #ad8b67; }
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.7rem;
+            color: #7a6248;
+        }
+        @media (max-width: 700px) {
+            .novel-card-large { flex-direction: column; text-align: center; }
+            .navbar { margin: 0 0.5rem 1rem 0.5rem; }
+        }
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(12px);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            z-index: 1100;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
@@ -86,6 +356,7 @@
             </div>
         </div>
     </div>
+
     <div class="hero">
         <div class="hero-content">
             <div class="hero-badge"><i class="fas fa-book-open"></i> 仲南莲 · 私人阅读空间</div>
@@ -96,6 +367,7 @@
             </div>
         </div>
     </div>
+
     <div class="main-container">
         <div class="novel-showcase">
             <div class="section-title">
@@ -124,8 +396,12 @@
                 </p>
             </div>
         </div>
+
         <div class="comments-section">
-            <div class="comments-header"><i class="fas fa-comments"></i><h3>读者留言</h3></div>
+            <div class="comments-header" style="display:flex; gap:8px; align-items:center; margin-bottom:1rem;">
+                <i class="fas fa-comments" style="color:#c96f3e; font-size:1.3rem;"></i>
+                <h3 style="font-size:1.2rem;">读者留言</h3>
+            </div>
             <div class="comment-form">
                 <div class="comment-input-group"><input type="text" id="commentName" placeholder="你的称呼 (选填)"></div>
                 <div class="comment-input-group"><textarea id="commentText" placeholder="写下你的阅读感受... (必填)" maxlength="500"></textarea></div>
@@ -136,6 +412,7 @@
     </div>
     <footer><p>© 仲南莲的私人网站 · 文字的温度 | 沉淀时光，静读好文</p></footer>
 </div>
+
 <div id="readerModal" class="modal-overlay">
     <div class="reader-container">
         <div class="reader-header"><h3 id="readerTitle">夺妻为后</h3><button class="close-reader" id="closeReaderBtn">&times;</button></div>
@@ -145,15 +422,17 @@
 <div id="toastMsg" class="toast-msg"></div>
 
 <script>
+    // ================= 核心：不再有任何写死的文件名 =================
     const NOVELS_FOLDER = "novels/";
-    let chaptersList = [];
+    let chaptersList = [];      // [{ index, filename, title }]
     let currentChapterIndex = 0;
     let chapterCache = {};
 
-    async function loadManifest() {
+    // 唯一可靠的读取方式：manifest.json
+    async function loadFromManifest() {
         try {
             const response = await fetch(`${NOVELS_FOLDER}manifest.json`);
-            if (!response.ok) throw new Error('manifest不存在');
+            if (!response.ok) throw new Error('manifest not found');
             const manifest = await response.json();
             if (manifest.chapters && Array.isArray(manifest.chapters)) {
                 chaptersList = manifest.chapters.map((ch, idx) => ({
@@ -163,17 +442,28 @@
                 }));
                 return true;
             }
-        } catch(e) {}
+        } catch (e) {
+            console.log('manifest.json 不存在或读取失败');
+        }
         return false;
     }
 
+    // 初始化章节列表
     async function initChapters() {
         const container = document.getElementById('chapterLinksContainer');
-        const success = await loadManifest();
+        const success = await loadFromManifest();
+        
         if (!success || chaptersList.length === 0) {
-            container.innerHTML = `<div style="color:#c96f3e;">⚠️ 未找到 novels/manifest.json 文件<br>请在 novels 文件夹中创建 manifest.json 并配置章节列表</div>`;
+            container.innerHTML = `
+                <div style="color:#c96f3e; width:100%; padding:0.5rem 0;">
+                    ⚠️ 未找到 novels/manifest.json 文件<br>
+                    <span style="font-size:0.75rem;">请在 novels 文件夹中创建 manifest.json 并配置章节列表，格式：<br>
+                    { "chapters": [ {"file": "第一章.txt", "title": "第一章 · 标题"}, ... ] }</span>
+                </div>
+            `;
             return false;
         }
+        
         container.innerHTML = '';
         chaptersList.forEach(ch => {
             const link = document.createElement('span');
@@ -185,17 +475,24 @@
         return true;
     }
 
+    // 加载章节内容
     async function loadChapterContent(index) {
         if (chapterCache[index]) return chapterCache[index];
         const ch = chaptersList[index];
         if (!ch) return '<div class="error-placeholder">章节不存在</div>';
+        
         try {
             const resp = await fetch(ch.filename);
-            if (!resp.ok) throw new Error();
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
             let text = await resp.text();
+            // 转义HTML
             text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-            let html = text.split(/\n\n+/).map(para => `<p>  ${para.replace(/\n/g, '</p><p>  ')}</p>`).join('');
-            html = `<div style="margin-bottom:1.5rem;"><span style="background:#c96f3e; color:white; padding:0.2rem 1rem; border-radius:30px;">${ch.title}</span></div>${html}<p style="text-align:right; margin-top:1.5rem;">—— ${ch.title} 完 ——</p>`;
+            // 段落处理
+            let html = text.split(/\n\n+/).map(para => {
+                let inner = para.replace(/\n/g, '</p><p>  ');
+                return `<p>  ${inner}</p>`;
+            }).join('');
+            html = `<div style="margin-bottom:1.2rem;"><span style="background:#c96f3e; color:white; padding:0.2rem 1rem; border-radius:30px;">${ch.title}</span></div>${html}<p style="text-align:right; margin-top:1.2rem;">—— ${ch.title} 完 ——</p>`;
             chapterCache[index] = html;
             return html;
         } catch(e) {
@@ -207,7 +504,6 @@
         if (!chaptersList.length) { showToast('暂无章节'); return; }
         currentChapterIndex = index;
         const modal = document.getElementById('readerModal');
-        const contentDiv = document.getElementById('readerContent');
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
         await renderReader();
@@ -215,15 +511,18 @@
 
     async function renderReader() {
         const contentDiv = document.getElementById('readerContent');
-        const titleEl = document.getElementById('readerTitle');
-        titleEl.innerText = '夺妻为后';
+        document.getElementById('readerTitle').innerText = '夺妻为后';
+        
         let selectorHtml = '<div class="chapter-selector">';
         chaptersList.forEach((ch, idx) => {
             selectorHtml += `<button class="chapter-btn ${idx === currentChapterIndex ? 'active' : ''}" data-index="${idx}">${ch.title}</button>`;
         });
         selectorHtml += '</div>';
+        
         const chapterHtml = await loadChapterContent(currentChapterIndex);
         contentDiv.innerHTML = selectorHtml + chapterHtml;
+        
+        // 绑定切换事件
         document.querySelectorAll('.chapter-btn').forEach(btn => {
             btn.onclick = async () => {
                 const idx = parseInt(btn.dataset.index);
@@ -236,6 +535,7 @@
         });
     }
 
+    // ================= 辅助功能 =================
     function initVisitorCount() {
         let c = localStorage.getItem('site_visitor_count');
         c = c ? parseInt(c) + 1 : 1;
@@ -252,32 +552,70 @@
     function renderComments() {
         const container = document.getElementById('commentsList');
         if (!comments.length) { container.innerHTML = '<div class="empty-comments">✨ 暂无留言 ✨</div>'; return; }
-        container.innerHTML = comments.slice().reverse().map(c => `<div class="comment-item"><div class="comment-name"><span><i class="fas fa-user-circle"></i> ${escapeHtml(c.name)}</span><span class="comment-time">${c.time}</span></div><div class="comment-text">${escapeHtml(c.text)}</div></div>`).join('');
+        container.innerHTML = comments.slice().reverse().map(c => `
+            <div class="comment-item">
+                <div class="comment-name" style="display:flex; justify-content:space-between;">
+                    <span><i class="fas fa-user-circle"></i> ${escapeHtml(c.name)}</span>
+                    <span class="comment-time" style="font-size:0.7rem; color:#aa9b8a;">${c.time}</span>
+                </div>
+                <div class="comment-text">${escapeHtml(c.text)}</div>
+            </div>
+        `).join('');
     }
     function addComment(name, text) {
         if (!text.trim()) { showToast('请填写留言内容'); return false; }
-        comments.push({ id: Date.now(), name: name.trim() || '匿名读者', text: text.trim().substring(0,500), time: new Date().toLocaleString('zh-CN') });
+        comments.push({
+            id: Date.now(),
+            name: name.trim() || '匿名读者',
+            text: text.trim().substring(0, 500),
+            time: new Date().toLocaleString('zh-CN')
+        });
         localStorage.setItem('novel_comments', JSON.stringify(comments));
-        let content = `留言记录\n${new Date().toLocaleString()}\n${'='.repeat(40)}\n`;
-        comments.forEach((c,i)=>{ content += `[${i+1}] ${c.time} | ${c.name}:\n${c.text}\n${'-'.repeat(40)}\n`; });
-        const blob = new Blob([content], {type: 'text/plain'});
-        const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `comments_${Date.now()}.txt`; a.click(); URL.revokeObjectURL(a.href);
+        // 导出为TXT
+        let content = `仲南莲的私人网站 - 留言记录\n生成时间：${new Date().toLocaleString()}\n${'='.repeat(50)}\n`;
+        comments.forEach((c, i) => {
+            content += `[${i+1}] ${c.time} | ${c.name}:\n${c.text}\n${'-'.repeat(40)}\n`;
+        });
+        const blob = new Blob([content], {type: 'text/plain;charset=utf-8'});
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = `comments_${Date.now()}.txt`;
+        a.click();
+        URL.revokeObjectURL(a.href);
         renderComments();
         showToast('留言已保存');
         return true;
     }
-    function showToast(msg) { const t = document.getElementById('toastMsg'); t.innerText = msg; t.style.opacity = '1'; setTimeout(() => t.style.opacity = '0', 2500); }
-    function escapeHtml(str) { return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m])); }
-    function closeReader() { document.getElementById('readerModal').style.display = 'none'; document.body.style.overflow = ''; }
+    function showToast(msg) {
+        const t = document.getElementById('toastMsg');
+        t.innerText = msg;
+        t.style.opacity = '1';
+        setTimeout(() => t.style.opacity = '0', 2500);
+    }
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m]));
+    }
+    function closeReader() {
+        document.getElementById('readerModal').style.display = 'none';
+        document.body.style.overflow = '';
+    }
 
     async function init() {
         initVisitorCount();
         loadComments();
         const hasChapters = await initChapters();
-        if (hasChapters) document.getElementById('novelMainCard').onclick = () => openReader(0);
-        document.getElementById('submitCommentBtn').onclick = () => { addComment(document.getElementById('commentName').value, document.getElementById('commentText').value); document.getElementById('commentText').value = ''; };
+        if (hasChapters && chaptersList.length > 0) {
+            document.getElementById('novelMainCard').onclick = () => openReader(0);
+        } else {
+            document.getElementById('novelMainCard').style.opacity = '0.6';
+            document.getElementById('novelMainCard').style.cursor = 'not-allowed';
+        }
+        document.getElementById('submitCommentBtn').onclick = () => {
+            addComment(document.getElementById('commentName').value, document.getElementById('commentText').value);
+            document.getElementById('commentText').value = '';
+        };
         document.getElementById('closeReaderBtn').onclick = closeReader;
-        document.getElementById('readerModal').onclick = (e) => { if(e.target === e.currentTarget) closeReader(); };
+        document.getElementById('readerModal').onclick = (e) => { if (e.target === e.currentTarget) closeReader(); };
     }
     init();
 </script>
